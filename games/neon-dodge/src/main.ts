@@ -59,12 +59,8 @@ async function bootstrap(): Promise<void> {
 
   const game = new Phaser.Game(config);
 
-  // Pass engine to initial scene via registry
-  game.events.once('ready', () => {
-    game.scene.start('MenuScene', { engine });
-    // Stop BootScene from competing
-    game.scene.stop('BootScene');
-  });
+  // Store engine on registry so BootScene can pass it to MenuScene
+  game.registry.set('engine', engine);
 
   // Resize handler
   window.addEventListener('resize', () => {

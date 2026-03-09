@@ -9,8 +9,8 @@ export class MenuScene extends Phaser.Scene {
     super({ key: 'MenuScene' });
   }
 
-  init(data: { engine: GameEngine }): void {
-    this.engine = data.engine;
+  init(data: { engine?: GameEngine }): void {
+    this.engine = data.engine ?? this.game.registry.get('engine');
   }
 
   create(): void {

@@ -42,6 +42,9 @@ async function bootstrap(): Promise<void> {
 
   const game = new Phaser.Game(phaserConfig);
 
+  // Store engine on registry as fallback in case auto-start fires before ready
+  game.registry.set('engine', engine);
+
   game.events.once('ready', () => {
     game.scene.start('MenuScene', { engine });
   });

@@ -24,12 +24,18 @@ importers:
         specifier: ^3.87.0
         version: 3.90.0
     devDependencies:
+      jsdom:
+        specifier: ^25.0.1
+        version: 25.0.1
       typescript:
         specifier: ^5.7.2
         version: 5.9.3
       vite:
         specifier: ^6.1.0
         version: 6.4.1(@types/node@25.4.0)
+      vitest:
+        specifier: ^2.1.8
+        version: 2.1.9(@types/node@25.4.0)(jsdom@25.0.1)
 
   games/neon-dodge:
     dependencies:
@@ -40,12 +46,18 @@ importers:
         specifier: ^3.87.0
         version: 3.90.0
     devDependencies:
+      jsdom:
+        specifier: ^25.0.1
+        version: 25.0.1
       typescript:
         specifier: ^5.7.2
         version: 5.9.3
       vite:
         specifier: ^6.1.0
         version: 6.4.1(@types/node@25.4.0)
+      vitest:
+        specifier: ^2.1.8
+        version: 2.1.9(@types/node@25.4.0)(jsdom@25.0.1)
 
   games/tap-blitz:
     dependencies:
@@ -56,12 +68,18 @@ importers:
         specifier: ^3.87.0
         version: 3.90.0
     devDependencies:
+      jsdom:
+        specifier: ^25.0.1
+        version: 25.0.1
       typescript:
         specifier: ^5.7.2
         version: 5.9.3
       vite:
         specifier: ^6.1.0
         version: 6.4.1(@types/node@25.4.0)
+      vitest:
+        specifier: ^2.1.8
+        version: 2.1.9(@types/node@25.4.0)(jsdom@25.0.1)
 
   packages/core:
     dependencies:

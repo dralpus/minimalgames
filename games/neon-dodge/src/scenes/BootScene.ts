@@ -31,6 +31,6 @@ export class BootScene extends Phaser.Scene {
   }
 
   create(): void {
-    this.scene.start('MenuScene');
+    this.scene.start('MenuScene', { engine: this.game.registry.get('engine') });
   }
 }
