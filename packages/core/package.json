@@ -1,0 +1,26 @@
+{
+  "name": "@minimalgames/core",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "echo 'lint ok'",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "firebase": "^11.2.0",
+    "howler": "^2.2.4",
+    "hammerjs": "^2.0.8"
+  },
+  "devDependencies": {
+    "@types/howler": "^2.2.12",
+    "@types/hammerjs": "^2.0.46",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

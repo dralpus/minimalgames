@@ -1,0 +1,72 @@
+name: Deploy Production
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: production
+  cancel-in-progress: false  # Don't cancel production deploys
+
+jobs:
+  build-and-deploy:
+    name: Deploy ${{ matrix.game }} to production
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        game: [neon-dodge, tap-blitz, gravity-flip]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build ${{ matrix.game }} (production)
+        run: pnpm turbo run build --filter=@minimalgames/${{ matrix.game }}
+        env:
+          NODE_ENV: production
+          VITE_FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
+          VITE_FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.FIREBASE_STORAGE_BUCKET }}
+          VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}
+          VITE_FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
+          VITE_ADS_ENABLED: 'true'
+          VITE_AD_CLIENT: ${{ secrets.AD_CLIENT }}
+          VITE_AD_UNIT_BANNER: ${{ secrets.AD_UNIT_BANNER }}
+          VITE_AD_UNIT_REWARDED: ${{ secrets.AD_UNIT_REWARDED }}
+          VITE_AD_UNIT_INTERSTITIAL: ${{ secrets.AD_UNIT_INTERSTITIAL }}
+
+      - name: Deploy ${{ matrix.game }} to Cloudflare Pages (production)
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: mg-${{ matrix.game }}
+          directory: games/${{ matrix.game }}/dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: main  # Force production branch
+
+  create-release:
+    name: Create GitHub Release
+    needs: build-and-deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create release tag
+        run: |
+          TAG="v$(date +'%Y.%m.%d')-$(git rev-parse --short HEAD)"
+          git tag $TAG
+          git push origin $TAG
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

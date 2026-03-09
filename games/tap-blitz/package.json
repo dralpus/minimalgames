@@ -1,0 +1,22 @@
+{
+  "name": "@minimalgames/tap-blitz",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit",
+    "lint": "echo 'lint ok'",
+    "test": "echo 'no unit tests for game'",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@minimalgames/core": "workspace:*",
+    "phaser": "^3.87.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "vite": "^6.1.0"
+  }
+}
