@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minimal Games</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0d0d1a;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #fff 0%, #aaa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      color: #888;
+      font-size: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 960px;
+      width: 100%;
+    }
+
+    .card {
+      background: #161625;
+      border: 1px solid #2a2a3e;
+      border-radius: 20px;
+      padding: 2rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .card:hover, .card:focus {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    .card .emoji { font-size: 2.5rem; }
+
+    .card h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #999;
+      line-height: 1.5;
+    }
+
+    .card .badge {
+      display: inline-block;
+      margin-top: auto;
+      padding: 0.3rem 0.8rem;
+      background: var(--accent);
+      color: #000;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      width: fit-content;
+    }
+
+    footer {
+      margin-top: 3rem;
+      color: #444;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Minimal Games</h1>
+  <p class="subtitle">Tap. Dodge. Survive.</p>
+
+  <div class="games">
+
+    <a class="card" href="gravity-flip/" style="--accent: #ff9f1c">
+      <span class="emoji">🔄</span>
+      <h2>Gravity Flip</h2>
+      <p>Flip gravity at the right moment to dodge obstacles in this endless runner. How far can you go?</p>
+      <span class="badge">Play Now</span>
+    </a>
+
+    <a class="card" href="neon-dodge/" style="--accent: #00f5ff">
+      <span class="emoji">⚡</span>
+      <h2>Neon Dodge</h2>
+      <p>Weave between neon bars dropping from above. The faster you react, the higher you score.</p>
+      <span class="badge">Play Now</span>
+    </a>
+
+    <a class="card" href="tap-blitz/" style="--accent: #ff2d78">
+      <span class="emoji">🎯</span>
+      <h2>Tap Blitz</h2>
+      <p>Tap targets as fast as you can before the timer runs out. Test your reflexes!</p>
+      <span class="badge">Play Now</span>
+    </a>
+
+  </div>
+
+  <footer>Built with Phaser 3 + TypeScript</footer>
+
+</body>
+</html>

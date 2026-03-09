@@ -61,8 +61,7 @@ export class AudioManager {
   setMuted(muted: boolean): void {
     this.muted = muted;
     if (this.Howl) {
-      const { Howler } = require('howler');
-      Howler.mute(muted);
+      import('howler').then(({ Howler }) => Howler.mute(muted)).catch(() => {});
     }
   }
 

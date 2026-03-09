@@ -52,7 +52,6 @@ export class MenuScene extends Phaser.Scene {
       color: 'white',
       backgroundColor: theme.primary,
       padding: { x: 36, y: 16 },
-      borderRadius: 16,
     }).setOrigin(0.5).setInteractive({ useHandCursor: true });
 
     this.tweens.add({

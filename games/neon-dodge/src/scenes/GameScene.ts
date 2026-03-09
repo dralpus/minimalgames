@@ -227,7 +227,7 @@ export class GameScene extends Phaser.Scene {
       this.difficulty = newDifficulty;
       this.barSpeed = BAR_START_SPEED + (this.difficulty - 1) * BAR_SPEED_INCREMENT;
       this.spawnInterval = Math.max(300, BAR_SPAWN_INTERVAL - (this.difficulty - 1) * BAR_SPAWN_DECREMENT);
-      this.spawnTimer.delay = this.spawnInterval;
+      this.spawnTimer.reset({ delay: this.spawnInterval, callback: this.spawnTimer.callback, callbackScope: this.spawnTimer.callbackScope, loop: true });
     }
   }
 

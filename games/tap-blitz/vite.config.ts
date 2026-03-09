@@ -7,6 +7,7 @@ export default defineConfig({
       '@core': resolve(__dirname, '../../packages/core/src/index.ts'),
     },
   },
+  base: '/minimalgames/tap-blitz/',
   build: {
     outDir: 'dist',
     target: 'es2020',
