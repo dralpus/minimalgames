@@ -16,11 +16,10 @@ async function bootstrap(): Promise<void> {
     { id: 'streak_20',   name: 'Legendary',       description: 'Reach a 20 tap streak' },
   ]);
 
-  await engine.init();
-
-  if (!engine.auth.getCurrentUser()) {
-    await engine.auth.loginAnonymously().catch(() => {});
-  }
+  // Init Firebase in the background so Phaser starts immediately
+  engine.init()
+    .then(() => engine.auth.getCurrentUser() || engine.auth.loginAnonymously())
+    .catch(() => {});
 
   if (GAME_CONFIG.adsEnabled) {
     engine.ads.showBanner('bottom');

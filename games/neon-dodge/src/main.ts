@@ -18,13 +18,10 @@ async function bootstrap(): Promise<void> {
     { id: 'diff_5',      name: 'Untouchable',       description: 'Reach difficulty 5' },
   ]);
 
-  // Initialize Firebase and core systems
-  await engine.init();
-
-  // Auto anonymous login so leaderboard works without friction
-  if (!engine.auth.getCurrentUser()) {
-    await engine.auth.loginAnonymously().catch(() => {});
-  }
+  // Init Firebase in the background so Phaser starts immediately
+  engine.init()
+    .then(() => engine.auth.getCurrentUser() || engine.auth.loginAnonymously())
+    .catch(() => {});
 
   // Show banner ad
   if (GAME_CONFIG.adsEnabled) {

@@ -16,11 +16,10 @@ async function bootstrap(): Promise<void> {
     { id: 'pass_50',    name: 'Gravity Master',  description: 'Pass 50 obstacles' },
   ]);
 
-  await engine.init();
-
-  if (!engine.auth.getCurrentUser()) {
-    await engine.auth.loginAnonymously().catch(() => {});
-  }
+  // Init Firebase in the background so Phaser starts immediately
+  engine.init()
+    .then(() => engine.auth.getCurrentUser() || engine.auth.loginAnonymously())
+    .catch(() => {});
 
   if (GAME_CONFIG.adsEnabled) {
     engine.ads.showBanner('bottom');
