@@ -11,7 +11,10 @@ minimalgames/
 ├── games/
 │   ├── neon-dodge/    # Minimalist dodge game
 │   ├── tap-blitz/     # Reaction tapping game
-│   └── gravity-flip/  # Gravity-flipping endless runner
+│   ├── gravity-flip/  # Gravity-flipping endless runner
+│   ├── orbit-hop/     # Orbital timing hops through space
+│   ├── pin-storm/     # Knife-hit style pin throwing, 20+ levels
+│   └── hue-jump/      # Color-switch vertical climber
 └── .github/workflows/ # CI/CD pipelines
 ```
 

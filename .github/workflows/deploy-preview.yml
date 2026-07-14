@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        game: [neon-dodge, tap-blitz, gravity-flip]
+        game: [neon-dodge, tap-blitz, gravity-flip, orbit-hop, pin-storm, hue-jump]
     steps:
       - uses: actions/checkout@v4
 

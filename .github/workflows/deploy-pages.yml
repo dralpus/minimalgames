@@ -44,10 +44,12 @@ jobs:
       - name: Assemble gh-pages directory
         run: |
           mkdir -p gh-pages
-          cp -r games/gravity-flip/dist  gh-pages/gravity-flip
-          cp -r games/neon-dodge/dist    gh-pages/neon-dodge
-          cp -r games/tap-blitz/dist     gh-pages/tap-blitz
-          cp docs/index.html             gh-pages/index.html
+          # Copy every game that produced a dist — new games deploy automatically
+          for dist in games/*/dist; do
+            game=$(basename "$(dirname "$dist")")
+            cp -r "$dist" "gh-pages/$game"
+          done
+          cp docs/index.html gh-pages/index.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
