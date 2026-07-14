@@ -1,0 +1,18 @@
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
+
+export default defineConfig({
+  resolve: {
+    alias: {
+      '@core': resolve(__dirname, '../../packages/core/src/index.ts'),
+    },
+  },
+  base: '/minimalgames/orbit-hop/',
+  build: {
+    outDir: 'dist',
+    target: 'es2020',
+  },
+  server: {
+    port: 3004,
+  },
+});

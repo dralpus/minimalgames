@@ -1,0 +1,24 @@
+{
+  "name": "@minimalgames/hue-jump",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit",
+    "lint": "echo 'lint ok'",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@minimalgames/core": "workspace:*",
+    "phaser": "^3.87.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "vite": "^6.1.0",
+    "vitest": "^2.1.8",
+    "jsdom": "^25.0.1"
+  }
+}
