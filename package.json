@@ -18,5 +18,11 @@
     "node": ">=20",
     "pnpm": ">=9"
   },
-  "packageManager": "pnpm@9.15.0"
+  "packageManager": "pnpm@9.15.0",
+  "pnpm": {
+    "overrides": {
+      "protobufjs@<7.5.5": "^7.5.5",
+      "websocket-driver@<0.7.5": "^0.7.5"
+    }
+  }
 }
